@@ -1,5 +1,6 @@
 package com.example.hibernatecasacde.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -26,6 +27,7 @@ public class Author {
      * базы данных. Это происходит в момент сохранения
      * или обновления родительской сущности.
      */
+    @JsonBackReference
     @OneToMany(mappedBy = "author", orphanRemoval = true)
     private Set<Book> books;
 
