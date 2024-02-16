@@ -2,11 +2,19 @@ package com.example.hibernatecasacde.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Set;
 
 @Entity
 @Table(name = "author")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Author {
 
     @Id
@@ -27,40 +35,8 @@ public class Author {
      * базы данных. Это происходит в момент сохранения
      * или обновления родительской сущности.
      */
+
     @JsonBackReference
     @OneToMany(mappedBy = "author", orphanRemoval = true)
     private Set<Book> books;
-
-    public Author() {
-    }
-
-    public Author(Long id, String name, Set<Book> books) {
-        this.id = id;
-        this.name = name;
-        this.books = books;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
 }
