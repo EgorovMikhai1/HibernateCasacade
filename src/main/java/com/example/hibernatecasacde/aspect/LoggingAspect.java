@@ -23,6 +23,8 @@ public class LoggingAspect {
     public void serviceLog() {
     }
 
+
+
     @Before("controllerLog()")
     public void doBeforeController(JoinPoint jp) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
