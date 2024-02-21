@@ -37,6 +37,6 @@ public class Author {
      */
 
     @JsonBackReference
-    @OneToMany(mappedBy = "author", orphanRemoval = true)
+    @OneToMany(mappedBy = "author", orphanRemoval = true, cascade = CascadeType.PERSIST)
     private Set<Book> books;
 }

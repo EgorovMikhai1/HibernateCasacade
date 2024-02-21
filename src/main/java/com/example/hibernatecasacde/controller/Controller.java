@@ -10,6 +10,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -65,8 +67,8 @@ public class Controller {
             )
     )
     @PostMapping(value = "persist")
-    public void createA(@RequestBody CreateAuthorPersistDto dto) {
-        services.createAuthor(dto);
+    public ResponseEntity<Author> createA(@RequestBody CreateAuthorPersistDto dto) {
+        return new ResponseEntity<>(services.createAuthor(dto), HttpStatus.CREATED);
     }
 
     /**
