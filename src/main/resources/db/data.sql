@@ -1,19 +1,17 @@
-CREATE TABLE IF NOT EXISTS author
-    (id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                        name VARCHAR(255)
+CREATE TABLE IF NOT EXISTS author (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS book (
-                      id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                      title VARCHAR(255),
-                      author_id BIGINT,
-                      FOREIGN KEY (author_id) REFERENCES author(id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(50) NOT NULL,
+    author_id INT,
+    FOREIGN KEY (author_id) REFERENCES author(id)
 );
 
-INSERT INTO author (name) VALUES ('Лев Толстой');
-INSERT INTO author (name) VALUES ('Фёдор Достоевский');
+INSERT INTO author (id, name) VALUES (1, 'Лев Толстой');
+INSERT INTO author (id, name) VALUES(2, 'Федор Достоевский');
 
-INSERT INTO book (title, author_id) VALUES ('Война и мир', 1);
-INSERT INTO book (title, author_id) VALUES ('Анна Каренина', 1);
-INSERT INTO book (title, author_id) VALUES ('Преступление и наказание', 2);
-INSERT INTO book (title, author_id) VALUES ('Идиот', 2);
+INSERT INTO book (id, title, author_id) VALUES (1, 'Война и мир', 1);
+INSERT INTO book (id, title, author_id) VALUES(2, 'Преступление и наказание', 2);

@@ -7,9 +7,9 @@ import com.example.hibernatecasacde.mapper.Mapers;
 import com.example.hibernatecasacde.model.Author;
 import com.example.hibernatecasacde.model.Book;
 import com.example.hibernatecasacde.repo.Repo;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,19 +23,24 @@ public class Services {
 
     @Transactional
     public Author createAuthor(CreateAuthorPersistDto dto) {
-
         Author author = new Author();
-        Book book = new Book();
+        //repo.findByName(dto.getName());
+//        if (author != null) {
+//            throw new AuthorAlreadyExistException(ErrorMessages.AUTHOR_ALREADY_EXIST);
+//        } else {
 
-        Set<Book> setBOOK = new HashSet<>();
-        setBOOK.add(book);
+            Book book = new Book();
 
-        book.setTitle(dto.getTitle());
-        author.setName(dto.getName());
+            Set<Book> setBOOK = new HashSet<>();
+            setBOOK.add(book);
 
-        author.setBooks(setBOOK);
-        repo.saveAndFlush(mapers.toEntity(dto));
+            book.setTitle(dto.getTitle());
+            author.setName(dto.getName());
 
+            author.setBooks(setBOOK);
+            repo.saveAndFlush(mapers.toEntity(dto));
+
+        //}
         return author;
     }
 

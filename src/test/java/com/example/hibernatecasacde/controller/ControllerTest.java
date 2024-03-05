@@ -28,7 +28,7 @@ class ControllerTest {
 
 
     @Test
-    void createAuthorTest() throws Exception {
+    void createAuthorTestPositive() throws Exception {
         CreateAuthorPersistDto dto = new CreateAuthorPersistDto();
         dto.setName("TEST_NAME");
         dto.setTitle("TEST_TITLE");
@@ -48,7 +48,7 @@ class ControllerTest {
         System.out.println("**********************************************");
 
         MvcResult createAuthorResult = mockMvc
-                .perform(MockMvcRequestBuilders.post("/persist")
+                .perform(MockMvcRequestBuilders.post("/con/persist")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(capDTO))
                 .andReturn();
@@ -59,4 +59,37 @@ class ControllerTest {
         Assertions.assertEquals(201, createAuthorResult.getResponse().getStatus());
         Assertions.assertEquals(dto.getName(), authorResult.getName());
     }
+
+//    @Test
+//    void createAuthorTestWithAuthorAlreadyExistException() throws Exception {
+//        CreateAuthorPersistDto dto = new CreateAuthorPersistDto();
+//        dto.setName("Leo");
+//        dto.setTitle(null);
+//
+//        String capDTO = objectMapper.writeValueAsString(dto);
+//
+//        System.out.println("**********************************************");
+//        System.out.println("**********************************************");
+//        System.out.println("**********************************************");
+//
+//
+//        System.out.println("CAPDTO: " + capDTO);
+//
+//
+//        System.out.println("**********************************************");
+//        System.out.println("**********************************************");
+//        System.out.println("**********************************************");
+//
+//        MvcResult createAuthorResult = mockMvc
+//                .perform(MockMvcRequestBuilders.post("/con/persist")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(capDTO))
+//                .andReturn();
+//
+//        String authorResultJSON = createAuthorResult.getResponse().getContentAsString();
+//        Author authorResult = objectMapper.readValue(authorResultJSON, Author.class);
+//
+//        Assertions.assertEquals(201, createAuthorResult.getResponse().getStatus());
+//        Assertions.assertEquals(dto.getName(), authorResult.getName());
+//    }
 }

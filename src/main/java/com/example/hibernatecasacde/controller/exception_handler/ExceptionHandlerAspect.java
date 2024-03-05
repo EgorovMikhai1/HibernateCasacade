@@ -1,5 +1,6 @@
 package com.example.hibernatecasacde.controller.exception_handler;
 
+import com.example.hibernatecasacde.exceptions.AuthorAlreadyExistException;
 import com.example.hibernatecasacde.exceptions.AuthorNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,16 @@ public class ExceptionHandlerAspect {
         headers.setContentType(MediaType.APPLICATION_JSON);
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
+                .headers(headers)
+                .body("!!!!" + ex.getMessage());
+    }
+
+    @ExceptionHandler(AuthorAlreadyExistException.class)
+    public ResponseEntity<String> handleAuthorAlreadyExistException(AuthorAlreadyExistException ex) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
                 .headers(headers)
                 .body("!!!!" + ex.getMessage());
     }

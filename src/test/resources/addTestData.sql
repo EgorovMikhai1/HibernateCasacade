@@ -1,4 +1,4 @@
-INSERT INTO author (name) VALUES ('Лев Толстой');
+INSERT INTO author (name) VALUES ('Leo');
 INSERT INTO author (name) VALUES ('Фёдор Достоевский');
 
 INSERT INTO book (title, author_id) VALUES ('Война и мир', 1);

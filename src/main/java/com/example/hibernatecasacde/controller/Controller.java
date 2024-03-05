@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "")
 @RequiredArgsConstructor
 public class Controller {
 
@@ -24,7 +24,7 @@ public class Controller {
     /**
      * Простой гет запрос для @ExceptionHandler
      */
-    @GetMapping(value = "get/{id}")
+    @GetMapping(value = "/get/{id}")
     @Operation(summary = "Что делает метод тезисно",
             description = "Описывает более подробно что будет в качестве ответа",
             tags = "Тут можно одним словом описать к какой группе запросов это относится, например АВТОРЫ",
@@ -66,7 +66,7 @@ public class Controller {
                     )
             )
     )
-    @PostMapping(value = "persist")
+    @PostMapping(value = "/persist")
     public ResponseEntity<Author> createA(@RequestBody CreateAuthorPersistDto dto) {
         return new ResponseEntity<>(services.createAuthor(dto), HttpStatus.CREATED);
     }

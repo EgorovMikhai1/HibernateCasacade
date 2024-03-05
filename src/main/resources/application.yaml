@@ -1,6 +1,10 @@
 spring:
     main:
         banner-mode: off
+    security:
+        user:
+            name: user
+            password: 123123
 
     h2:
         console:
