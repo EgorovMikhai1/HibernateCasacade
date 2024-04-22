@@ -26,7 +26,6 @@ class ControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-
     @Test
     void createAuthorTestPositive() throws Exception {
         CreateAuthorPersistDto dto = new CreateAuthorPersistDto();

@@ -116,7 +116,7 @@
 
                 <configuration>
                     <outputDirectory>
-                        ${project.basedir}/target/site
+                        target/site
                     </outputDirectory>
 
                     <excludes>

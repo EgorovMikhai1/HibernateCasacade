@@ -2,6 +2,8 @@ package com.example.hibernatecasacde.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "book")
@@ -20,6 +22,7 @@ public class Book {
     private String title;
 
     @ManyToOne
+    @Fetch(FetchMode.SELECT)
     @JoinColumn(name = "author_id")
     private Author author;
 }

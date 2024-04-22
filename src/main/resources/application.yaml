@@ -30,6 +30,9 @@ spring:
           data-locations: classpath:db/data.sql
           mode: always
 
+logging:
+    level:
+        root: info
 
 server:
     port: 8080
